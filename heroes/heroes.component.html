@@ -1,0 +1,25 @@
+<h2>My Heroes</h2>
+
+<div>
+  <label for="new-hero">Hero name: </label>
+  <input id="new-hero" #heroName />
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <!--Command Pattern\Behavioral-->
+  <!--This pattern states that, when an object wants to notify another object or call a method of
+another object, it should use another object instead of doing so directly. The object that will
+establish the communication is known as the command object-->
+  <button type="button" class="add-button" (click)="add(heroName.value); heroName.value=''">
+    Add hero
+  </button>
+</div>
+
+<ul class="heroes">
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button type="button" class="delete" title="delete hero"
+            (click)="delete(hero)">x</button>
+  </li>
+</ul>
